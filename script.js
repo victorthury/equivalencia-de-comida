@@ -118,10 +118,12 @@ const data = {
 };
 
 // Elementos
+const form = document.querySelector("form");
 const grupoSelect = document.getElementById("grupo");
 const alimentoSelect = document.getElementById("alimento");
 const btnCalcular = document.getElementById("btnCalcular");
 const resultadoLista = document.getElementById("resultado");
+const quantidadeInput = document.getElementById("quantidade");
 
 // Inicializa
 preencherGrupos();
@@ -183,4 +185,12 @@ function calcular() {
 
 // Eventos
 grupoSelect.addEventListener("change", atualizarAlimentos);
-btnCalcular.addEventListener("click", calcular);
+form.addEventListener("submit", function (e) {
+  e.preventDefault(); // Impede reload
+  if (!form.checkValidity()) {
+    form.reportValidity(); // Mostra mensagem padrão do navegador
+    return;
+  }
+
+  calcular();
+});

@@ -20,6 +20,7 @@
       rel="apple-touch-icon"
       href="./public/images/android-chrome-192x192.png"
     />
+    <link rel="manifest" href="./manifest.json" />
   </head>
   <body class="bg-light">
     <div class="container py-5">
@@ -61,12 +62,13 @@
                     id="quantidade"
                     class="form-control"
                     value="100"
+                    required
                   />
                 </div>
 
                 <div class="col-12 col-md-6 d-grid align-self-end">
                   <button
-                    type="button"
+                    type="submit"
                     id="btnCalcular"
                     class="btn btn-primary"
                   >

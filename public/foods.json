@@ -1,0 +1,410 @@
+{
+  "type": "success",
+  "groups": [
+    "Frutas",
+    "Gordura Vegetal",
+    "Carboidratos",
+    "Prote\u00edna",
+    "Latic\u00edneos"
+  ],
+  "foods": {
+    "Frutas": [
+      {
+        "text": "Abacate",
+        "quantity": 96
+      },
+      {
+        "text": "Abacaxi",
+        "quantity": 48
+      },
+      {
+        "text": "Acerola",
+        "quantity": 33
+      },
+      {
+        "text": "Ameixa",
+        "quantity": 52
+      },
+      {
+        "text": "Amora",
+        "quantity": 43
+      },
+      {
+        "text": "Banana",
+        "quantity": 91
+      },
+      {
+        "text": "Bergamota-Tangerina",
+        "quantity": 58
+      },
+      {
+        "text": "Caju",
+        "quantity": 43
+      },
+      {
+        "text": "Caqui",
+        "quantity": 71
+      },
+      {
+        "text": "Carambola",
+        "quantity": 31
+      },
+      {
+        "text": "Damasco",
+        "quantity": 48
+      },
+      {
+        "text": "Figo",
+        "quantity": 41
+      },
+      {
+        "text": "Framboesa",
+        "quantity": 53
+      },
+      {
+        "text": "Goiaba",
+        "quantity": 54
+      },
+      {
+        "text": "Jabuticaba",
+        "quantity": 58
+      },
+      {
+        "text": "Kiwi",
+        "quantity": 51
+      },
+      {
+        "text": "Laranja",
+        "quantity": 37
+      },
+      {
+        "text": "Mam\u00e3o",
+        "quantity": 45
+      },
+      {
+        "text": "Manga",
+        "quantity": 72
+      },
+      {
+        "text": "Maracuj\u00e1",
+        "quantity": 107
+      },
+      {
+        "text": "Ma\u00e7\u00e3",
+        "quantity": 55
+      },
+      {
+        "text": "Melancia",
+        "quantity": 32
+      },
+      {
+        "text": "Mel\u00e3o",
+        "quantity": 29
+      },
+      {
+        "text": "Mirtilo",
+        "quantity": 57
+      },
+      {
+        "text": "Morango",
+        "quantity": 30
+      },
+      {
+        "text": "Physalis",
+        "quantity": 49
+      },
+      {
+        "text": "Pitaya",
+        "quantity": 51
+      },
+      {
+        "text": "P\u00eara",
+        "quantity": 60
+      },
+      {
+        "text": "P\u00eassego",
+        "quantity": 36
+      },
+      {
+        "text": "T\u00e2mara",
+        "quantity": 282
+      },
+      {
+        "text": "Uva",
+        "quantity": 49
+      }
+    ],
+    "Gordura Vegetal": [
+      {
+        "text": "Abacate",
+        "quantity": 96
+      },
+      {
+        "text": "Amendoim",
+        "quantity": 544
+      },
+      {
+        "text": "Am\u00eandoas",
+        "quantity": 575
+      },
+      {
+        "text": "Castanha Do Par\u00e1",
+        "quantity": 643
+      },
+      {
+        "text": "Nozes",
+        "quantity": 620
+      },
+      {
+        "text": "\u00d3leos vegetais",
+        "quantity": 884
+      }
+    ],
+    "Carboidratos": [
+      {
+        "text": "Ab\u00f3bora Cabotian",
+        "quantity": 55
+      },
+      {
+        "text": "Amido de Milho",
+        "quantity": 340
+      },
+      {
+        "text": "Arroz branco ou integral",
+        "quantity": 125
+      },
+      {
+        "text": "Aveia",
+        "quantity": 394
+      },
+      {
+        "text": "Batata Baroa (Mandioquinha)",
+        "quantity": 80
+      },
+      {
+        "text": "Batata Doce",
+        "quantity": 77
+      },
+      {
+        "text": "Batata Inglesa",
+        "quantity": 52
+      },
+      {
+        "text": "Cuscuz (desidratado)",
+        "quantity": 376
+      },
+      {
+        "text": "Doce de Leite",
+        "quantity": 315
+      },
+      {
+        "text": "Farinha de Mandioca",
+        "quantity": 365
+      },
+      {
+        "text": "Feij\u00e3o",
+        "quantity": 78
+      },
+      {
+        "text": "Gr\u00e3o de Bico",
+        "quantity": 164
+      },
+      {
+        "text": "Leite Condensado",
+        "quantity": 321
+      },
+      {
+        "text": "Lentilha",
+        "quantity": 116
+      },
+      {
+        "text": "Macarr\u00e3o",
+        "quantity": 125
+      },
+      {
+        "text": "Mandioca",
+        "quantity": 125
+      },
+      {
+        "text": "Mel",
+        "quantity": 304
+      },
+      {
+        "text": "Milho",
+        "quantity": 160
+      },
+      {
+        "text": "Palmito",
+        "quantity": 115
+      },
+      {
+        "text": "Pinh\u00e3o",
+        "quantity": 160
+      },
+      {
+        "text": "Pipoca",
+        "quantity": 377
+      },
+      {
+        "text": "Polenta",
+        "quantity": 187
+      },
+      {
+        "text": "Polpa de A\u00e7a\u00ed",
+        "quantity": 64
+      },
+      {
+        "text": "P\u00e3o",
+        "quantity": 294
+      },
+      {
+        "text": "Suco de uva integral",
+        "quantity": 60
+      },
+      {
+        "text": "Tapioca",
+        "quantity": 340
+      },
+      {
+        "text": "\u00c1gua de Coco",
+        "quantity": 21
+      }
+    ],
+    "Prote\u00edna": [
+      {
+        "text": "Albumina",
+        "quantity": 329
+      },
+      {
+        "text": "Atum em \u00e1gua e sal",
+        "quantity": 165
+      },
+      {
+        "text": "Atum Light",
+        "quantity": 67
+      },
+      {
+        "text": "Camar\u00e3o Cozido ou Assado",
+        "quantity": 90
+      },
+      {
+        "text": "Carne vermelha magra",
+        "quantity": 193
+      },
+      {
+        "text": "Clara de Ovo",
+        "quantity": 59
+      },
+      {
+        "text": "Fil\u00e9 de frango",
+        "quantity": 162
+      },
+      {
+        "text": "F\u00edgado Bovino",
+        "quantity": 225
+      },
+      {
+        "text": "Lombo Su\u00edno",
+        "quantity": 210
+      },
+      {
+        "text": "Ovo Inteiro",
+        "quantity": 122
+      },
+      {
+        "text": "Peixe de \u00c1gua Doce",
+        "quantity": 121
+      },
+      {
+        "text": "Salm\u00e3o Sem Pele",
+        "quantity": 242
+      },
+      {
+        "text": "Soja Texturizada Crua",
+        "quantity": 336
+      },
+      {
+        "text": "Tofu Cru",
+        "quantity": 80
+      },
+      {
+        "text": "Whey Protein",
+        "quantity": 319
+      }
+    ],
+    "Latic\u00edneos": [
+      {
+        "text": "Iogurte 2 Ingredientes Nestl\u00e9 Desnatado",
+        "quantity": 35
+      },
+      {
+        "text": "Iogurte 2 Ingredientes Nestl\u00e9 Integral",
+        "quantity": 74
+      },
+      {
+        "text": "Iogurte Batavo Grego Zero 10+ Peda\u00e7os",
+        "quantity": 60
+      },
+      {
+        "text": "Iogurte Grego Vigor Zero",
+        "quantity": 54
+      },
+      {
+        "text": "Leite Desnatado",
+        "quantity": 33
+      },
+      {
+        "text": "Leite em p\u00f3 Desnatado",
+        "quantity": 345
+      },
+      {
+        "text": "Leite em p\u00f3 Integral",
+        "quantity": 496
+      },
+      {
+        "text": "Leite Integral",
+        "quantity": 56
+      },
+      {
+        "text": "Leite Semidesnatado",
+        "quantity": 48
+      },
+      {
+        "text": "Queijo Cottage",
+        "quantity": 98
+      },
+      {
+        "text": "Queijo Minas Frescal",
+        "quantity": 264
+      },
+      {
+        "text": "Queijo Minas Meia Cura",
+        "quantity": 320
+      },
+      {
+        "text": "Queijo Quark",
+        "quantity": 81
+      },
+      {
+        "text": "Queijo Ricota",
+        "quantity": 139
+      },
+      {
+        "text": "Queijos Amarelos",
+        "quantity": 359
+      },
+      {
+        "text": "Requeij\u00e3o Light",
+        "quantity": 182
+      }
+    ]
+  },
+  "user": {
+    "image_url": "https:\/\/nutro.app.br\/storage\/1\/cassi.jpg",
+    "name": "Cassiano Diniz",
+    "email": "contato@cassianodiniz.com.br",
+    "phone": "+5549991483551",
+    "crn": "8212",
+    "theme": "green"
+  }
+}
