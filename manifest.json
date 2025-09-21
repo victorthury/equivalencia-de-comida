@@ -1,0 +1,22 @@
+{
+  "name": "Equivalência de Alimentos",
+  "short_name": "Equivalência",
+  "description": "Ferramenta para substituição de alimentos com base em equivalências nutricionais.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#053c5e",
+  "theme_color": "#053c5e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "./public/images/android-chrome-192x192.png"
+    },
+    {
+      "src": "./public/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
