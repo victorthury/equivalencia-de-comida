@@ -48,9 +48,33 @@
                   <select id="grupo" class="form-select"></select>
                 </div>
 
-                <div class="col-12 col-md-6">
-                  <label for="alimento" class="form-label">Alimento</label>
-                  <select id="alimento" class="form-select"></select>
+                <div class="col-12 col-md-6 position-relative" id="alimentoContainer">
+                  <label for="alimentoInput" class="form-label">Alimento</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      id="alimentoInput"
+                      class="form-control"
+                      placeholder="Buscar ou selecionar alimento..."
+                      autocomplete="off"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="btnToggleAlimentoDropdown"
+                      tabindex="-1"
+                      title="Ver opções"
+                    >
+                      ▾
+                    </button>
+                  </div>
+                  <div
+                    id="alimentoDropdown"
+                    class="dropdown-menu w-100 shadow-sm mt-1"
+                    style="max-height: 260px; overflow-y: auto; z-index: 1050;"
+                  ></div>
+                  <input type="hidden" id="alimento" required />
                 </div>
 
                 <div class="col-12 col-md-6">

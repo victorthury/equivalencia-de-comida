@@ -40,6 +40,7 @@ const data = {
       { text: "Pêra", quantity: 60 },
       { text: "Pêssego", quantity: 36 },
       { text: "Tâmara", quantity: 282 },
+      { text: "Tucumã (polpa crua)", quantity: 262 },
       { text: "Uva", quantity: 49 },
     ],
     "Gordura Vegetal": [
@@ -55,25 +56,37 @@ const data = {
       { text: "Amido de Milho", quantity: 340 },
       { text: "Arroz branco ou integral", quantity: 125 },
       { text: "Aveia", quantity: 394 },
+      { text: "Banana cozida caramelada", quantity: 181 },
+      { text: "Banana cozida com manteiga e açúcar", quantity: 156 },
       { text: "Batata Baroa (Mandioquinha)", quantity: 80 },
       { text: "Batata Doce", quantity: 77 },
       { text: "Batata Inglesa", quantity: 52 },
+      { text: "Cará cozido (com óleo de soja e sal)", quantity: 118 },
+      { text: "Cará cozido (sem óleo, com sal)", quantity: 77 },
       { text: "Cuscuz (desidratado)", quantity: 376 },
       { text: "Doce de Leite", quantity: 315 },
       { text: "Farinha de Mandioca", quantity: 365 },
+      { text: "Farofa de mandioca temperada", quantity: 406 },
       { text: "Feijão", quantity: 78 },
       { text: "Grão de Bico", quantity: 164 },
+      { text: "Inhame cru", quantity: 97 },
       { text: "Leite Condensado", quantity: 321 },
       { text: "Lentilha", quantity: 116 },
       { text: "Macarrão", quantity: 125 },
+      { text: "Macaxeira cozida", quantity: 125 },
+      { text: "Macaxeira crua", quantity: 151 },
+      { text: "Macaxeira frita", quantity: 300 },
       { text: "Mandioca", quantity: 125 },
       { text: "Mel", quantity: 304 },
       { text: "Milho", quantity: 160 },
       { text: "Palmito", quantity: 115 },
+      { text: "Palmito de pupunha (conserva)", quantity: 29 },
       { text: "Pinhão", quantity: 160 },
       { text: "Pipoca", quantity: 377 },
       { text: "Polenta", quantity: 187 },
-      { text: "Polpa de Açaí", quantity: 64 },
+      { text: "Polpa de Açaí", quantity: 68 },
+      { text: "Pupunha (fruto cozido)", quantity: 212 },
+      { text: "Purê de batata inglesa (leite integral e manteiga)", quantity: 87 },
       { text: "Pão", quantity: 294 },
       { text: "Suco de uva integral", quantity: 60 },
       { text: "Tapioca", quantity: 340 },
@@ -140,7 +153,10 @@ const data = {
 // Elementos
 const form = document.querySelector("form");
 const grupoSelect = document.getElementById("grupo");
-const alimentoSelect = document.getElementById("alimento");
+const alimentoInput = document.getElementById("alimentoInput");
+const alimentoDropdown = document.getElementById("alimentoDropdown");
+const btnToggleAlimentoDropdown = document.getElementById("btnToggleAlimentoDropdown");
+const alimentoHidden = document.getElementById("alimento");
 const btnCalcular = document.getElementById("btnCalcular");
 const resultadoLista = document.getElementById("resultado");
 const quantidadeInput = document.getElementById("quantidade");
@@ -148,6 +164,7 @@ const filtroInput = document.getElementById("filtroAlimento");
 const semResultados = document.getElementById("semResultados");
 
 let listaEquivalentes = [];
+let activeDropdownIndex = -1;
 
 // Inicializa
 preencherGrupos();
@@ -183,6 +200,77 @@ function obterAlimentos(grupo) {
   }));
 }
 
+// Dropdown pesquisável de alimentos
+function abrirDropdown() {
+  filtrarDropdown(alimentoInput.value.trim());
+  alimentoDropdown.classList.add("show");
+}
+
+function fecharDropdown() {
+  alimentoDropdown.classList.remove("show");
+  activeDropdownIndex = -1;
+}
+
+function selecionarAlimento(item) {
+  alimentoInput.value = item.text;
+  alimentoHidden.value = item.text;
+  alimentoInput.setCustomValidity("");
+  fecharDropdown();
+}
+
+function filtrarDropdown(termo = "") {
+  alimentoDropdown.innerHTML = "";
+  const termoNorm = normalizarTexto(termo);
+  const grupo = grupoSelect.value;
+  const alimentos = obterAlimentos(grupo);
+
+  const filtrados = alimentos.filter((item) =>
+    normalizarTexto(item.text).includes(termoNorm)
+  );
+
+  activeDropdownIndex = -1;
+
+  if (filtrados.length === 0) {
+    const vazio = document.createElement("div");
+    vazio.className = "dropdown-item text-muted disabled py-2";
+    vazio.textContent = "Nenhum alimento encontrado";
+    alimentoDropdown.appendChild(vazio);
+    return;
+  }
+
+  const isTodos = grupo === "Todos";
+
+  filtrados.forEach((item) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "dropdown-item d-flex justify-content-between align-items-center py-2 text-wrap";
+
+    if (isTodos && item.group) {
+      btn.innerHTML = `<span>${item.text}</span> <span class="badge bg-secondary-subtle text-secondary-emphasis border ms-2">${item.group}</span>`;
+    } else {
+      btn.textContent = item.text;
+    }
+
+    btn.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      selecionarAlimento(item);
+    });
+
+    alimentoDropdown.appendChild(btn);
+  });
+}
+
+function atualizarItemAtivo(items) {
+  items.forEach((item, idx) => {
+    if (idx === activeDropdownIndex) {
+      item.classList.add("active");
+      item.scrollIntoView({ block: "nearest" });
+    } else {
+      item.classList.remove("active");
+    }
+  });
+}
+
 // Funções
 function preencherGrupos() {
   grupoSelect.innerHTML = "";
@@ -197,16 +285,10 @@ function preencherGrupos() {
 }
 
 function atualizarAlimentos() {
-  alimentoSelect.innerHTML = "";
-  const grupo = grupoSelect.value;
-  const alimentos = obterAlimentos(grupo);
-
-  alimentos.forEach((item) => {
-    const opt = document.createElement("option");
-    opt.value = item.text;
-    opt.textContent = grupo === "Todos" ? `${item.text} (${item.group})` : item.text;
-    alimentoSelect.appendChild(opt);
-  });
+  alimentoInput.value = "";
+  alimentoHidden.value = "";
+  alimentoInput.setCustomValidity("");
+  fecharDropdown();
 }
 
 function renderizarTabela() {
@@ -244,11 +326,13 @@ function renderizarTabela() {
 
 function calcular() {
   const grupo = grupoSelect.value;
-  const alimentoNome = alimentoSelect.value;
+  const alimentoNome = alimentoHidden.value || alimentoInput.value.trim();
   const qtd = parseFloat(quantidadeInput.value);
 
   const alimentos = obterAlimentos(grupo);
-  const alimentoBase = alimentos.find((f) => f.text === alimentoNome);
+  const alimentoBase = alimentos.find(
+    (f) => normalizarTexto(f.text) === normalizarTexto(alimentoNome)
+  );
   if (!alimentoBase) return;
 
   listaEquivalentes = alimentos
@@ -271,7 +355,81 @@ function calcular() {
   renderizarTabela();
 }
 
-// Eventos
+// Eventos do Dropdown de Alimentos
+alimentoInput.addEventListener("input", () => {
+  const termo = alimentoInput.value.trim();
+  alimentoDropdown.classList.add("show");
+  filtrarDropdown(termo);
+
+  const grupo = grupoSelect.value;
+  const alimentos = obterAlimentos(grupo);
+  const match = alimentos.find(
+    (f) => normalizarTexto(f.text) === normalizarTexto(termo)
+  );
+
+  if (match) {
+    alimentoHidden.value = match.text;
+    alimentoInput.setCustomValidity("");
+  } else {
+    alimentoHidden.value = "";
+    alimentoInput.setCustomValidity("Selecione um alimento da lista.");
+  }
+});
+
+alimentoInput.addEventListener("focus", () => {
+  abrirDropdown();
+});
+
+alimentoInput.addEventListener("click", () => {
+  abrirDropdown();
+});
+
+alimentoInput.addEventListener("keydown", (e) => {
+  const items = alimentoDropdown.querySelectorAll("button.dropdown-item");
+  if (!alimentoDropdown.classList.contains("show") || items.length === 0) {
+    if (e.key === "ArrowDown") {
+      abrirDropdown();
+    }
+    return;
+  }
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    activeDropdownIndex = (activeDropdownIndex + 1) % items.length;
+    atualizarItemAtivo(items);
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    activeDropdownIndex = (activeDropdownIndex - 1 + items.length) % items.length;
+    atualizarItemAtivo(items);
+  } else if (e.key === "Enter") {
+    if (activeDropdownIndex >= 0 && activeDropdownIndex < items.length) {
+      e.preventDefault();
+      items[activeDropdownIndex].dispatchEvent(new MouseEvent("mousedown"));
+    }
+  } else if (e.key === "Escape") {
+    fecharDropdown();
+  }
+});
+
+if (btnToggleAlimentoDropdown) {
+  btnToggleAlimentoDropdown.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (alimentoDropdown.classList.contains("show")) {
+      fecharDropdown();
+    } else {
+      alimentoInput.focus();
+      abrirDropdown();
+    }
+  });
+}
+
+document.addEventListener("click", (e) => {
+  const container = document.getElementById("alimentoContainer");
+  if (container && !container.contains(e.target)) {
+    fecharDropdown();
+  }
+});
+
 grupoSelect.addEventListener("change", () => {
   atualizarAlimentos();
   resultadoLista.innerHTML = "";
@@ -291,8 +449,26 @@ if (filtroInput) {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault(); // Impede reload
+
+  const grupo = grupoSelect.value;
+  const alimentos = obterAlimentos(grupo);
+  const alimentoNome = alimentoHidden.value || alimentoInput.value.trim();
+  const match = alimentos.find(
+    (f) => normalizarTexto(f.text) === normalizarTexto(alimentoNome)
+  );
+
+  if (!match) {
+    alimentoInput.setCustomValidity("Selecione um alimento válido da lista.");
+    alimentoInput.reportValidity();
+    return;
+  }
+
+  alimentoHidden.value = match.text;
+  alimentoInput.value = match.text;
+  alimentoInput.setCustomValidity("");
+
   if (!form.checkValidity()) {
-    form.reportValidity(); // Mostra mensagem padrão do navegador
+    form.reportValidity();
     return;
   }
 

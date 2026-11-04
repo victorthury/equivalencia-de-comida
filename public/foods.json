@@ -4,8 +4,8 @@
     "Frutas",
     "Gordura Vegetal",
     "Carboidratos",
-    "Prote\u00edna",
-    "Latic\u00edneos"
+    "Proteína",
+    "Laticíneos"
   ],
   "foods": {
     "Frutas": [
@@ -78,7 +78,7 @@
         "quantity": 37
       },
       {
-        "text": "Mam\u00e3o",
+        "text": "Mamão",
         "quantity": 45
       },
       {
@@ -86,11 +86,11 @@
         "quantity": 72
       },
       {
-        "text": "Maracuj\u00e1",
+        "text": "Maracujá",
         "quantity": 107
       },
       {
-        "text": "Ma\u00e7\u00e3",
+        "text": "Maçã",
         "quantity": 55
       },
       {
@@ -98,7 +98,7 @@
         "quantity": 32
       },
       {
-        "text": "Mel\u00e3o",
+        "text": "Melão",
         "quantity": 29
       },
       {
@@ -118,16 +118,20 @@
         "quantity": 51
       },
       {
-        "text": "P\u00eara",
+        "text": "Pêra",
         "quantity": 60
       },
       {
-        "text": "P\u00eassego",
+        "text": "Pêssego",
         "quantity": 36
       },
       {
-        "text": "T\u00e2mara",
+        "text": "Tâmara",
         "quantity": 282
+      },
+      {
+        "text": "Tucumã (polpa crua)",
+        "quantity": 262
       },
       {
         "text": "Uva",
@@ -144,11 +148,11 @@
         "quantity": 544
       },
       {
-        "text": "Am\u00eandoas",
+        "text": "Amêndoas",
         "quantity": 575
       },
       {
-        "text": "Castanha Do Par\u00e1",
+        "text": "Castanha Do Pará",
         "quantity": 643
       },
       {
@@ -156,13 +160,13 @@
         "quantity": 620
       },
       {
-        "text": "\u00d3leos vegetais",
+        "text": "Óleos vegetais",
         "quantity": 884
       }
     ],
     "Carboidratos": [
       {
-        "text": "Ab\u00f3bora Cabotian",
+        "text": "Abóbora Cabotian",
         "quantity": 55
       },
       {
@@ -178,6 +182,14 @@
         "quantity": 394
       },
       {
+        "text": "Banana cozida caramelada",
+        "quantity": 181
+      },
+      {
+        "text": "Banana cozida com manteiga e açúcar",
+        "quantity": 156
+      },
+      {
         "text": "Batata Baroa (Mandioquinha)",
         "quantity": 80
       },
@@ -188,6 +200,14 @@
       {
         "text": "Batata Inglesa",
         "quantity": 52
+      },
+      {
+        "text": "Cará cozido (com óleo de soja e sal)",
+        "quantity": 118
+      },
+      {
+        "text": "Cará cozido (sem óleo, com sal)",
+        "quantity": 77
       },
       {
         "text": "Cuscuz (desidratado)",
@@ -202,12 +222,20 @@
         "quantity": 365
       },
       {
-        "text": "Feij\u00e3o",
+        "text": "Farofa de mandioca temperada",
+        "quantity": 406
+      },
+      {
+        "text": "Feijão",
         "quantity": 78
       },
       {
-        "text": "Gr\u00e3o de Bico",
+        "text": "Grão de Bico",
         "quantity": 164
+      },
+      {
+        "text": "Inhame cru",
+        "quantity": 97
       },
       {
         "text": "Leite Condensado",
@@ -218,8 +246,20 @@
         "quantity": 116
       },
       {
-        "text": "Macarr\u00e3o",
+        "text": "Macarrão",
         "quantity": 125
+      },
+      {
+        "text": "Macaxeira cozida",
+        "quantity": 125
+      },
+      {
+        "text": "Macaxeira crua",
+        "quantity": 151
+      },
+      {
+        "text": "Macaxeira frita",
+        "quantity": 300
       },
       {
         "text": "Mandioca",
@@ -238,7 +278,11 @@
         "quantity": 115
       },
       {
-        "text": "Pinh\u00e3o",
+        "text": "Palmito de pupunha (conserva)",
+        "quantity": 29
+      },
+      {
+        "text": "Pinhão",
         "quantity": 160
       },
       {
@@ -250,11 +294,19 @@
         "quantity": 187
       },
       {
-        "text": "Polpa de A\u00e7a\u00ed",
-        "quantity": 64
+        "text": "Polpa de Açaí",
+        "quantity": 68
       },
       {
-        "text": "P\u00e3o",
+        "text": "Pupunha (fruto cozido)",
+        "quantity": 212
+      },
+      {
+        "text": "Purê de batata inglesa (leite integral e manteiga)",
+        "quantity": 87
+      },
+      {
+        "text": "Pão",
         "quantity": 294
       },
       {
@@ -266,25 +318,37 @@
         "quantity": 340
       },
       {
-        "text": "\u00c1gua de Coco",
+        "text": "Água de Coco",
         "quantity": 21
       }
     ],
-    "Prote\u00edna": [
+    "Proteína": [
+      {
+        "text": "Acém",
+        "quantity": 220
+      },
       {
         "text": "Albumina",
         "quantity": 329
       },
       {
-        "text": "Atum em \u00e1gua e sal",
-        "quantity": 165
+        "text": "Alcatra",
+        "quantity": 220
       },
       {
         "text": "Atum Light",
         "quantity": 67
       },
       {
-        "text": "Camar\u00e3o Cozido ou Assado",
+        "text": "Atum em água e sal",
+        "quantity": 165
+      },
+      {
+        "text": "Bacon magro",
+        "quantity": 330
+      },
+      {
+        "text": "Camarão Cozido ou Assado",
         "quantity": 90
       },
       {
@@ -296,28 +360,92 @@
         "quantity": 59
       },
       {
-        "text": "Fil\u00e9 de frango",
+        "text": "Contra-filé",
+        "quantity": 250
+      },
+      {
+        "text": "Copa lombo",
+        "quantity": 250
+      },
+      {
+        "text": "Costelinha",
+        "quantity": 290
+      },
+      {
+        "text": "Coxão duro",
+        "quantity": 190
+      },
+      {
+        "text": "Coxão mole",
+        "quantity": 210
+      },
+      {
+        "text": "Coxa + Sobrecoxa (com pele)",
+        "quantity": 230
+      },
+      {
+        "text": "Coxa de frango (sem pele)",
+        "quantity": 185
+      },
+      {
+        "text": "Filé mignon",
+        "quantity": 195
+      },
+      {
+        "text": "Filé de frango",
         "quantity": 162
       },
       {
-        "text": "F\u00edgado Bovino",
+        "text": "Filé suíno",
+        "quantity": 185
+      },
+      {
+        "text": "Fígado Bovino",
         "quantity": 225
       },
       {
-        "text": "Lombo Su\u00edno",
-        "quantity": 210
+        "text": "Fraldinha",
+        "quantity": 230
+      },
+      {
+        "text": "Lombo Suíno",
+        "quantity": 190
+      },
+      {
+        "text": "Músculo",
+        "quantity": 180
       },
       {
         "text": "Ovo Inteiro",
         "quantity": 122
       },
       {
-        "text": "Peixe de \u00c1gua Doce",
+        "text": "Patinho",
+        "quantity": 170
+      },
+      {
+        "text": "Peito de frango (sem pele)",
+        "quantity": 165
+      },
+      {
+        "text": "Peixe de Água Doce",
         "quantity": 121
       },
       {
-        "text": "Salm\u00e3o Sem Pele",
+        "text": "Pernil sem capa",
+        "quantity": 210
+      },
+      {
+        "text": "Picanha (sem gordura)",
+        "quantity": 240
+      },
+      {
+        "text": "Salmão Sem Pele",
         "quantity": 242
+      },
+      {
+        "text": "Sobrecoxa de frango (sem pele)",
+        "quantity": 195
       },
       {
         "text": "Soja Texturizada Crua",
@@ -332,17 +460,17 @@
         "quantity": 319
       }
     ],
-    "Latic\u00edneos": [
+    "Laticíneos": [
       {
-        "text": "Iogurte 2 Ingredientes Nestl\u00e9 Desnatado",
+        "text": "Iogurte 2 Ingredientes Nestlé Desnatado",
         "quantity": 35
       },
       {
-        "text": "Iogurte 2 Ingredientes Nestl\u00e9 Integral",
+        "text": "Iogurte 2 Ingredientes Nestlé Integral",
         "quantity": 74
       },
       {
-        "text": "Iogurte Batavo Grego Zero 10+ Peda\u00e7os",
+        "text": "Iogurte Batavo Grego Zero 10+ Pedaços",
         "quantity": 60
       },
       {
@@ -354,11 +482,11 @@
         "quantity": 33
       },
       {
-        "text": "Leite em p\u00f3 Desnatado",
+        "text": "Leite em pó Desnatado",
         "quantity": 345
       },
       {
-        "text": "Leite em p\u00f3 Integral",
+        "text": "Leite em pó Integral",
         "quantity": 496
       },
       {
@@ -394,17 +522,9 @@
         "quantity": 359
       },
       {
-        "text": "Requeij\u00e3o Light",
+        "text": "Requeijão Light",
         "quantity": 182
       }
     ]
-  },
-  "user": {
-    "image_url": "https:\/\/nutro.app.br\/storage\/1\/cassi.jpg",
-    "name": "Cassiano Diniz",
-    "email": "contato@cassianodiniz.com.br",
-    "phone": "+5549991483551",
-    "crn": "8212",
-    "theme": "green"
   }
 }
