@@ -144,15 +144,51 @@ const alimentoSelect = document.getElementById("alimento");
 const btnCalcular = document.getElementById("btnCalcular");
 const resultadoLista = document.getElementById("resultado");
 const quantidadeInput = document.getElementById("quantidade");
+const filtroInput = document.getElementById("filtroAlimento");
+const semResultados = document.getElementById("semResultados");
+
+let listaEquivalentes = [];
 
 // Inicializa
 preencherGrupos();
 atualizarAlimentos();
 
+// Normalização para busca (ignora acentos e maiúsculas/minúsculas)
+function normalizarTexto(str) {
+  return (str || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+// Retorna os alimentos de um grupo específico ou de todos os grupos
+function obterAlimentos(grupo) {
+  if (grupo === "Todos") {
+    const mapa = new Map();
+    data.groups.forEach((g) => {
+      (data.foods[g] || []).forEach((item) => {
+        if (!mapa.has(item.text)) {
+          mapa.set(item.text, { text: item.text, quantity: item.quantity, group: g });
+        }
+      });
+    });
+    return Array.from(mapa.values()).sort((a, b) =>
+      a.text.localeCompare(b.text, "pt-BR")
+    );
+  }
+
+  return (data.foods[grupo] || []).map((item) => ({
+    ...item,
+    group: grupo,
+  }));
+}
+
 // Funções
 function preencherGrupos() {
   grupoSelect.innerHTML = "";
-  data.groups.forEach((grupo) => {
+
+  const grupos = ["Todos", ...data.groups];
+  grupos.forEach((grupo) => {
     const opt = document.createElement("option");
     opt.value = grupo;
     opt.textContent = grupo;
@@ -163,48 +199,96 @@ function preencherGrupos() {
 function atualizarAlimentos() {
   alimentoSelect.innerHTML = "";
   const grupo = grupoSelect.value;
-  if (!grupo || !data.foods[grupo]) return;
+  const alimentos = obterAlimentos(grupo);
 
-  data.foods[grupo].forEach((item) => {
+  alimentos.forEach((item) => {
     const opt = document.createElement("option");
     opt.value = item.text;
-    opt.textContent = item.text;
+    opt.textContent = grupo === "Todos" ? `${item.text} (${item.group})` : item.text;
     alimentoSelect.appendChild(opt);
   });
+}
+
+function renderizarTabela() {
+  resultadoLista.innerHTML = "";
+  const termo = normalizarTexto(filtroInput ? filtroInput.value.trim() : "");
+  const filtrados = listaEquivalentes.filter((item) =>
+    normalizarTexto(item.text).includes(termo)
+  );
+
+  if (filtrados.length === 0) {
+    if (semResultados) semResultados.classList.remove("d-none");
+  } else {
+    if (semResultados) semResultados.classList.add("d-none");
+    const isTodos = grupoSelect.value === "Todos";
+
+    filtrados.forEach((item) => {
+      const tr = document.createElement("tr");
+
+      const tdAlimento = document.createElement("td");
+      if (isTodos && item.group) {
+        tdAlimento.innerHTML = `${item.text} <span class="badge bg-secondary-subtle text-secondary-emphasis border ms-1">${item.group}</span>`;
+      } else {
+        tdAlimento.textContent = item.text;
+      }
+
+      const tdQuantidade = document.createElement("td");
+      tdQuantidade.textContent = `${item.quantidade} g`;
+
+      tr.appendChild(tdAlimento);
+      tr.appendChild(tdQuantidade);
+      resultadoLista.appendChild(tr);
+    });
+  }
 }
 
 function calcular() {
   const grupo = grupoSelect.value;
   const alimentoNome = alimentoSelect.value;
-  const qtd = parseFloat(document.getElementById("quantidade").value);
+  const qtd = parseFloat(quantidadeInput.value);
 
-  resultadoLista.innerHTML = "";
-
-  const alimentoBase = data.foods[grupo].find((f) => f.text === alimentoNome);
+  const alimentos = obterAlimentos(grupo);
+  const alimentoBase = alimentos.find((f) => f.text === alimentoNome);
   if (!alimentoBase) return;
 
-  data.foods[grupo].forEach((item) => {
-    if (item.text !== alimentoBase.text) {
+  listaEquivalentes = alimentos
+    .filter((item) => item.text !== alimentoBase.text)
+    .map((item) => {
       const equivalente = Math.round(
         (qtd * alimentoBase.quantity) / item.quantity
       );
-      const tr = document.createElement("tr");
+      return {
+        text: item.text,
+        group: item.group,
+        quantidade: equivalente,
+      };
+    });
 
-      const tdAlimento = document.createElement("td");
-      tdAlimento.textContent = item.text;
+  if (filtroInput) {
+    filtroInput.disabled = false;
+  }
 
-      const tdQuantidade = document.createElement("td");
-      tdQuantidade.textContent = `${equivalente} g`;
-
-      tr.appendChild(tdAlimento);
-      tr.appendChild(tdQuantidade);
-      resultadoLista.appendChild(tr);
-    }
-  });
+  renderizarTabela();
 }
 
 // Eventos
-grupoSelect.addEventListener("change", atualizarAlimentos);
+grupoSelect.addEventListener("change", () => {
+  atualizarAlimentos();
+  resultadoLista.innerHTML = "";
+  listaEquivalentes = [];
+  if (filtroInput) {
+    filtroInput.value = "";
+    filtroInput.disabled = true;
+  }
+  if (semResultados) {
+    semResultados.classList.add("d-none");
+  }
+});
+
+if (filtroInput) {
+  filtroInput.addEventListener("input", renderizarTabela);
+}
+
 form.addEventListener("submit", function (e) {
   e.preventDefault(); // Impede reload
   if (!form.checkValidity()) {

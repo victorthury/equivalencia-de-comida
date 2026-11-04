@@ -79,9 +79,23 @@
 
               <!-- Resultados -->
               <div class="mt-5">
-                <h4 class="fw-semibold">Equivalentes:</h4>
-                <div class="table-responsive mt-3">
-                  <table class="table table-striped align-middle">
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3"
+                >
+                  <h4 class="fw-semibold mb-0">Equivalentes:</h4>
+                  <div class="col-12 col-sm-6 col-md-5">
+                    <input
+                      type="search"
+                      id="filtroAlimento"
+                      class="form-control"
+                      placeholder="🔍 Filtrar alimento..."
+                      disabled
+                    />
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-striped align-middle mb-0">
                     <thead class="table-light">
                       <tr>
                         <th>Alimento</th>
@@ -90,6 +104,12 @@
                     </thead>
                     <tbody id="resultado"></tbody>
                   </table>
+                  <div
+                    id="semResultados"
+                    class="text-center text-muted py-4 d-none"
+                  >
+                    Nenhum alimento encontrado com esse filtro.
+                  </div>
                 </div>
               </div>
             </div>
